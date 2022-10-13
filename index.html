@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+	<meta charset="utf-8" />
+	<title>YouCode | Scrum Board</title>
+	<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport" />
+	<meta content="" name="description" />
+	<meta content="" name="author" />
+	
+	<!-- ================== BEGIN core-css ================== -->
+	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
+	<!-- Begin bootstrap 5.2.2 -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+	<!-- End bootstrap 5.2.2 -->
+
+	<!-- Begin Font-Awesome -->
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+	<!-- End Font-Awesome -->
+
+	<link href="assets/css/style.css" rel="stylesheet" />
+	<link rel="stylesheet" href="assets\css\default\app.min.css">
+	<!-- ================== END core-css ================== -->
+</head>
+<body>
+
+
+	<!-- Begin Nav -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="background-color: #050A30;">
+  <!-- Container wrapper -->
+  <div class="container-fluid">
+    <!-- Toggle button -->
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-mdb-toggle="collapse"
+      data-mdb-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars"></i>
+    </button>
+
+    <!-- Collapsible wrapper -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <!-- Navbar brand -->
+      <a class="navbar-brand mt-2 mt-lg-0" href="#">
+        <img
+          src="assets\img\logo\Scrum.png"
+          height="50"
+          alt="MDB Logo"
+          loading="lazy"
+        />
+      </a>
+      <!-- Left links -->
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" href="#">Dashboard</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Team</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Projects</a>
+        </li>
+      </ul>
+      <!-- Left links -->
+    </div>
+    <!-- Collapsible wrapper -->
+  </div>
+  <!-- Container wrapper -->
+</nav>
+	<!-- End Nav -->
+
+	<!-- BEGIN #app -->
+	<div id="app" class="app-without-sidebar">
+		<!-- BEGIN #content -->
+		<div id="content" class="app-content main-style">
+				<div>
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item active"><a href="javascript:;">Home</a></li>
+						<li class="breadcrumb-item">Scrum Board </li>
+					</ol>
+				</div>
+				<div class="d-flex justify-content-end my-3">
+					<div class="d-flex justify-content-between align-items-end">
+						<button class="btn btn-dark rounded-5 px-4 d-flex align-items-center" ><i class="fa-solid fa-plus me-2 fs-5 text-white-50"></i>Add Task</button>
+					</div>
+				</div>
+			
+			<div class="row d-flex gap-3 m-0">
+				<div class="col-lg">
+					<div class="row">
+						<div class="bg-dark text-white p-3 text-center">
+							<h4 class="fs-5 m-0">To do (<span id="to-do-tasks-count">5</span>)</h4>
+						</div>
+						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+							<!-- TO DO TASKS HERE -->
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-question px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-question px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-question px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-question px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-question px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg">
+					<div class="row">
+						<div class="bg-dark text-white p-3 text-center">
+							<h4 class="fs-5 m-0">In Progress (<span id="to-do-tasks-count">5</span>)</h4>
+						</div>
+						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+							<!-- TO DO TASKS HERE -->
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-rotate-right px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-rotate-right px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-rotate-right px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-rotate-right px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+				<div class="col-lg">
+					<div class="row">
+						<div class="bg-dark text-white p-3 text-center">
+							<h4 class="fs-5 m-0">Done (<span id="to-do-tasks-count">5</span>)</h4>
+						</div>
+						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+							<!-- TO DO TASKS HERE -->
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-check px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-check px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-check px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+								<div class="fs-4 text-success">
+									<i class="fa-solid fa-circle-check px-3"></i>
+								</div>
+								<div class="text-start">
+									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+									<div class="pb-1">
+										<div class="opacity-50">#1 created in 2022-10-08</div>
+										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+									</div>
+									<div class="">
+										<span class="badge text-bg-primary">High</span>
+										<span class="badge text-bg-secondary">Feature</span>
+									</div>
+								</div>
+							</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END #content -->
+		
+		
+		<!-- BEGIN scroll-top-btn -->
+		<a href="javascript:;" class="btn btn-icon btn-circle btn-success btn-scroll-to-top" data-toggle="scroll-to-top"><i class="fa fa-angle-up"></i></a>
+		<!-- END scroll-top-btn -->
+	</div>
+	<!-- END #app -->
+	
+	<!-- TASK MODAL -->
+	<div class="modal fade" id="modal-task">
+		<!-- Modal content goes here -->
+	</div>
+	
+	<!-- ================== BEGIN core-js ================== -->
+	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+	<!-- ================== END core-js ================== -->
+
+	<!-- Begin Icons -->
+	<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+	<!-- End Icons -->
+</body>
+</html>
