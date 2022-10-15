@@ -343,15 +343,15 @@
 			<form>
 				<div class="mb-3">
 				  <label for="exampleInputTitle1" class="form-label">Title</label>
-				  <input type="text" class="form-control" id="exampleInputTitel1" aria-describedby="emailHelp">
+				  <input type="text"  class="form-control" id="exampleInputTitel1" aria-describedby="emailHelp" required>
 				</div>
 				<div class="mb-1">
 					<label for="exampleInputTitle2" class="form-label">Type</label><br>
-					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
   					<label class="form-check-label" for="flexRadioDefault1">Feature</label>
 				  </div>
 				  <div class="mb-3">
-					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2">
+					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required>
   					<label class="form-check-label" for="flexRadioDefault2">Bug</label>
 				  </div>
 				  <div class="mb-3">
@@ -375,20 +375,22 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputdate" class="form-label">Date</label>
-					<input type="date" class="form-control" id="exampleInputdate" aria-describedby="dateHelp">
+					<input type="date" class="form-control" id="exampleInputdate" aria-describedby="dateHelp" required>
 				  </div>
 				  <div class="mb-3">
 					<label for="validationTextarea" class="form-label">Textarea</label>
     				<textarea class="form-control" id="validationTextarea" rows="5" required></textarea>
 				  </div>
-			  </form>
-			  <!--end Form -->
+				  <div class="modal-footer">
+					<button type="submit" class="btn btn-danger rounded-5" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-dark rounded-5">Save changes</button>
+				</div>
+			</form>
+			<!--end Form -->
+			
 				</div>
 				<!-- footer modal -->
-				<div class="modal-footer">
-		  <button type="button" class="btn btn-danger rounded-5" data-bs-dismiss="modal">Close</button>
-		  <button type="button" class="btn btn-dark rounded-5">Save changes</button>
-				</div>
+				
 				<!-- End_Modal -->
 			</div>
 		</div>
