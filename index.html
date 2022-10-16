@@ -86,22 +86,25 @@
 						</div>
 						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
 							<!-- TO DO TASKS HERE -->
-							<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
-								<div class="fs-4 text-success">
-									<i class="fa-solid fa-circle-question px-3"></i>
-								</div>
-								<div class="text-start">
-									<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
-									<div class="pb-1">
-										<div class="opacity-50">#1 created in 2022-10-08</div>
-										<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+							<div>
+								<button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+									<div class="fs-4 text-success">
+										<i class="fa-solid fa-circle-question px-3"></i>
 									</div>
-									<div class="">
-										<span class="badge text-bg-primary">High</span>
-										<span class="badge text-bg-secondary">Feature</span>
+									<div class="text-start">
+										<div class="fw-bolder fs-5">Keep all the updated requirements in one place</div>
+										<div class="pb-1">
+											<div class="opacity-50">#1 created in 2022-10-08</div>
+											<div class="fw-bold" title="There is hardly anything more frustrating than having to look for current requirements in tens of comments under the actual description or having to decide which commenter is actually authorized to change the requirements. The goal here is to keep all the up-to-date requirements and details in the main/primary description of a task. Even though the information in comments may affect initial criteria, just update this primary description accordingly.">There is hardly anything more frustrating than having t...</div>
+										</div>
+										<div class="">
+											<span class="badge text-bg-primary">High</span>
+											<span class="badge text-bg-secondary">Feature</span>
+										</div>
 									</div>
-								</div>
-							</button>
+								</button>
+							</div>
+							
 						</div>
 					</div>
 				</div>
@@ -181,23 +184,23 @@
 				<!-- Body modal -->
 				<div class="modal-body">
 			<!--Begin Form -->
-			<form>
+			<form id="Task_Form">
 				<div class="mb-3">
 				  <label for="exampleInputTitle1" class="form-label">Title</label>
-				  <input type="text"  class="form-control" id="exampleInputTitel1" aria-describedby="emailHelp" required>
+				  <input type="text"  class="form-control" id="InputTitel" aria-describedby="emailHelp" required>
 				</div>
 				<div class="mb-1">
 					<label for="exampleInputTitle2" class="form-label">Type</label><br>
-					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault1" required>
+					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Feature" id="Radio_Feature" required>
   					<label class="form-check-label" for="flexRadioDefault1">Feature</label>
 				  </div>
 				  <div class="mb-3">
-					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" id="flexRadioDefault2" required>
+					<input class="form-check-input ms-3" type="radio" name="flexRadioDefault" value="Bug" id="Radio_Bug" required>
   					<label class="form-check-label" for="flexRadioDefault2">Bug</label>
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputTitle3" class="form-label">Priority</label>
-					<select class="form-select" aria-label="Default select example">
+					<select name="priority" id="priority_menu" class="form-select" aria-label="Default select example">
 						<option selected>Please Select</option>
 						<option value="Low">Low</option>
 						<option value="Medium">Medium</option>
@@ -207,24 +210,24 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputTitle4" class="form-label">Status</label>
-					<select class="form-select" aria-label="Default select example">
+					<select name="status" id="status_menu" class="form-select" aria-label="Default select example">
 						<option selected>Please Select</option>
 						<option value="To_do">To do</option>
-						<option value="In_Progress">In Progress</option>
+						<option value="In Progress">In Progress</option>
 						<option value="Done">Done</option>
 					  </select>
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputdate" class="form-label">Date</label>
-					<input type="date" class="form-control" id="exampleInputdate" aria-describedby="dateHelp" required>
+					<input type="date" class="form-control" id="input_Date" aria-describedby="dateHelp" required>
 				  </div>
 				  <div class="mb-3">
 					<label for="validationTextarea" class="form-label">Textarea</label>
-    				<textarea class="form-control" id="validationTextarea" rows="5" required></textarea>
+    				<textarea class="form-control" id="InputComment" rows="5" required></textarea>
 				  </div>
 				  <div class="modal-footer">
-					<button type="submit" class="btn btn-danger rounded-5" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-dark rounded-5">Save changes</button>
+					<button type="submit" class="btn btn-danger rounded-5" id="Btn_clear" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-dark rounded-5" id="Btn_Save">Save changes</button>
 				</div>
 			</form>
 			<!--end Form -->
