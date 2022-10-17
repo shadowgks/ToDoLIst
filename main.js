@@ -7,23 +7,8 @@ let status_menu = document.querySelector("#status_menu");
 let input_Date = document.querySelector("#input_Date");
 let input_description = document.querySelector("#InputComment");
 
-//get container div
-let to_do = document.querySelector("#to_do");
-let in_progress = document.querySelector("#in_progress");
-let done = document.querySelector("#done");
-
 let Btn_Save = document.getElementById("Btn_Save");
 
-
-
-function checkinputRadio(){
-//Check Radio inpute
-    if(Radio_Feature.checked == true){
-        checkF_B = document.querySelector('#Radio_Feature').value;
-    }else if(Radio_Bug.checked == true){
-        checkF_B = document.querySelector('#Radio_Bug').value;
-    }
-}
 
 //Function Click button save
 Btn_Save.addEventListener("click",(e)=>{
@@ -31,11 +16,6 @@ Btn_Save.addEventListener("click",(e)=>{
     checkinputRadio();
     Add();
     Clear();
-})
-
-//Function Click button clear 
-Btn_clear.addEventListener("click",(e)=>{
-    e.preventDefault();
 })
 
 //Create Array dataTask and check if you empty!
@@ -46,6 +26,14 @@ if(localStorage.tasks != null){
     dataTask = [];
 }
 
+function checkinputRadio(){
+    //Check Radio inpute
+    if(Radio_Feature.checked == true){
+        checkF_B = document.querySelector('#Radio_Feature').value;
+    }else if(Radio_Bug.checked == true){
+        checkF_B = document.querySelector('#Radio_Bug').value;
+    }
+}
 
 //Function Clear
 function Clear(){
@@ -69,8 +57,6 @@ function Add(){
     };
     //test
     console.log(newTask);
-
-
     //check input if you empty
     if(InputTitel.value == "" || priority_menu.value == "" || status_menu.value == "" || input_Date.value == "" || InputComment.value == ""){
         alert("Please Fill in Fields!!!");
@@ -88,16 +74,29 @@ function Add(){
 //Function Show_Task
 function Show_Task(){
     const list = document.querySelector("#to-do-tasks");
-    
 
     //Clear container div
     document.querySelector("#to_do").innerHTML = "";
     document.querySelector("#in_progress").innerHTML = "";
     document.querySelector("#done").innerHTML = "";
+    //get container div
+    let to_do = document.querySelector("#to_do");
+    let in_progress = document.querySelector("#in_progress");
+    let done = document.querySelector("#done");
 
+    //get title tasks
+    let countTodo = document.getElementById("to-do-tasks-count");
+    let countinProgress = document.getElementById("in-Progress-tasks-count");
+    let countDone = document.getElementById("done-tasks-count");
+
+    //Count Table
+    countTodo.innerHTML = 0;
+    countinProgress.innerHTML = 0;
+    countDone.innerHTML = 0;
 
     for(let i=0; i<dataTask.length; i++){
         if(dataTask[i].status == "To_do"){
+            countTodo.innerHTML++;
             to_do.innerHTML +=`
                 <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
                 <div class="fs-4 text-success">
@@ -106,38 +105,37 @@ function Show_Task(){
                 <div class="text-start">
                     <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
                             <div class="pb-1 w-100 pe-1">
-                                    <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
-                            
+                                <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
+                                <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
                             </div>
-                <div>
-
-                    <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                    <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
+                    <div>
+                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
+                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
                 </button>
                 `;
 
             list.appendChild(to_do);
             }else if(dataTask[i].status == "In Progress"){
+                countinProgress.innerHTML++;
                 in_progress.innerHTML +=`
                 <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
-                <div class="fs-4 text-success">
-                    <i class="fa-solid fa-rotate-right px-3"></i>
-                </div>
-                <div class="text-start">
-                    <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
-                            <div class="pb-1 w-100 pe-1">
-                                    <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
-                            
-                            </div>
-                <div>
-                    <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                    <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
+                    <div class="fs-4 text-success">
+                        <i class="fa-solid fa-rotate-right px-3"></i>
+                    </div>
+                    <div class="text-start">
+                        <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
+                        <div class="pb-1 w-100 pe-1">
+                            <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
+                            <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
+                        </div>
+                    <div>
+                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
+                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
                 </button>
                 `;
 
             }else if(dataTask[i].status == "Done"){
+                countDone.innerHTML++;
                 done.innerHTML +=`
                 <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
                 <div class="fs-4 text-success">
@@ -146,19 +144,22 @@ function Show_Task(){
                 <div class="text-start">
                     <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
                             <div class="pb-1 w-100 pe-1">
-                                    <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
-                            
+                                <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
+                                <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
                             </div>
-                <div>
-
-                    <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                    <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
+                    <div>
+                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
+                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
                 </button>
                 `;
             }
-    
     } 
+}
+
+//Delete
+//Function Delete
+function Delete(){
+
 }
 //Show Tasks
 Show_Task();
