@@ -12,30 +12,23 @@ let to_do = document.querySelector("#to_do");
 let in_progress = document.querySelector("#in_progress");
 let done = document.querySelector("#done");
 
+let Btn_Save = document.getElementById("Btn_Save");
 
 
-//Button Save Form
-let Btn_Save = document.querySelector("#Btn_Save");
-//Button clear Form
-let Btn_clear = document.querySelector("#Btn_clear");
 
-function checkinputs(){
+function checkinputRadio(){
 //Check Radio inpute
     if(Radio_Feature.checked == true){
         checkF_B = document.querySelector('#Radio_Feature').value;
     }else if(Radio_Bug.checked == true){
         checkF_B = document.querySelector('#Radio_Bug').value;
     }
-    //check input if you empty
-    if(InputTitel.value == "" || priority_menu.value == "" || status_menu.value == "" || input_Date.value == "" || InputComment.value == ""){
-        alert("Please Fill in Fields");
-    }
 }
 
 //Function Click button save
 Btn_Save.addEventListener("click",(e)=>{
     e.preventDefault();
-    checkinputs();
+    checkinputRadio();
     Add();
     Clear();
 })
@@ -80,7 +73,7 @@ function Add(){
 
     //check input if you empty
     if(InputTitel.value == "" || priority_menu.value == "" || status_menu.value == "" || input_Date.value == "" || InputComment.value == ""){
-        alert("Please Fill in Fields");
+        alert("Please Fill in Fields!!!");
     }else{
     //Add Elements To Array
     dataTask.push(newTask);
@@ -114,14 +107,13 @@ function Show_Task(){
                     <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
                             <div class="pb-1 w-100 pe-1">
                                     <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}
+                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
+                            
                             </div>
-                    </div>
                 <div>
+
                     <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                     <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </div>
-                </div>
                 </button>
                 `;
 
@@ -130,20 +122,18 @@ function Show_Task(){
                 in_progress.innerHTML +=`
                 <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
                 <div class="fs-4 text-success">
-                    <i class="fa-solid fa-circle-question px-3"></i>
+                    <i class="fa-solid fa-rotate-right px-3"></i>
                 </div>
                 <div class="text-start">
                     <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
                             <div class="pb-1 w-100 pe-1">
                                     <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}
+                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
+                            
                             </div>
-                    </div>
                 <div>
                     <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                     <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </div>
-                </div>
                 </button>
                 `;
 
@@ -151,20 +141,19 @@ function Show_Task(){
                 done.innerHTML +=`
                 <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
                 <div class="fs-4 text-success">
-                <i class="fa-solid fa-circle-question px-3"></i>
+                <i class="fa-solid fa-circle-check px-3"></i>
                 </div>
                 <div class="text-start">
                     <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
                             <div class="pb-1 w-100 pe-1">
                                     <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}
+                                    <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
+                            
                             </div>
-                    </div>
                 <div>
+
                     <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                     <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </div>
-                </div>
                 </button>
                 `;
             }
