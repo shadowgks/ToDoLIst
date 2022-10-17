@@ -68,7 +68,7 @@
 				<div class="d-flex justify-content-end my-3">
 					<div class="d-flex justify-content-between align-items-end">
 						<button 
-						id="btn_add_task"
+						onclick="btn_add_tasks()"
 						class="btn btn-dark rounded-5 px-4 d-flex align-items-center" 
 						data-bs-toggle="modal" 
 						data-bs-target="#exampleModal">
@@ -185,8 +185,10 @@
     				<textarea class="form-control" id="InputComment" rows="5" required></textarea>
 				  </div>
 				  <div class="modal-footer">
-					<button type="submit" class="btn btn-danger rounded-5" id="Btn_clear" data-bs-dismiss="modal">Close</button>
-					<button type="submit" class="btn btn-dark rounded-5"id="Btn_Save">Save changes</button>
+					<button type="submit" class="btn btn-warning rounded-5" id="Btn_close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-dark rounded-5" id="Btn_save">Save changes</button>
+					<button type="submit" class="btn btn-success rounded-5" id="Btn_edite">Edite</button>
+					<button type="submit" class="btn btn-danger rounded-5" onclick="deleteItem()" id="Btn_delete">Delete</button>
 				</div>
 			</form>
 			<!--end Form -->

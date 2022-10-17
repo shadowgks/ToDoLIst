@@ -7,15 +7,28 @@ let status_menu = document.querySelector("#status_menu");
 let input_Date = document.querySelector("#input_Date");
 let input_description = document.querySelector("#InputComment");
 
-let Btn_Save = document.getElementById("Btn_Save");
+//Get id Btn Form Modal
+let Btn_Save = document.getElementById("Btn_save");
+let Btn_Edite = document.getElementById("Btn_edite");
+let Btn_Delete = document.getElementById("Btn_delete");
 
+//function Btn Form Modal
+function btn_Tasks(){
+    Btn_Save.style.display = 'none';
+    Btn_Edite.style.display = 'block';
+    Btn_Delete.style.display = 'block';
+}
+function btn_add_tasks(){
+    Btn_Edite.style.display = 'none';
+    Btn_Delete.style.display = 'none';
+    Btn_Save.style.display = 'block';
+}
 
-//Function Click button save
+//Function Click btn save
 Btn_Save.addEventListener("click",(e)=>{
     e.preventDefault();
     checkinputRadio();
     Add();
-    Clear();
 })
 
 //Create Array dataTask and check if you empty!
@@ -25,6 +38,7 @@ if(localStorage.tasks != null){
 }else{
     dataTask = [];
 }
+
 
 function checkinputRadio(){
     //Check Radio inpute
@@ -66,6 +80,8 @@ function Add(){
     Show_Task();
     //Create Local Storage
     localStorage.setItem('tasks',JSON.stringify(dataTask));
+    //Clear inputs
+    Clear();
     }
     
 };
@@ -73,16 +89,15 @@ function Add(){
 //Read
 //Function Show_Task
 function Show_Task(){
-    const list = document.querySelector("#to-do-tasks");
-
-    //Clear container div
-    document.querySelector("#to_do").innerHTML = "";
-    document.querySelector("#in_progress").innerHTML = "";
-    document.querySelector("#done").innerHTML = "";
     //get container div
     let to_do = document.querySelector("#to_do");
     let in_progress = document.querySelector("#in_progress");
     let done = document.querySelector("#done");
+
+    //Clear container div
+    to_do.innerHTML = "";
+    in_progress.innerHTML = "";
+    done.innerHTML = "";
 
     //get title tasks
     let countTodo = document.getElementById("to-do-tasks-count");
@@ -94,11 +109,13 @@ function Show_Task(){
     countinProgress.innerHTML = 0;
     countDone.innerHTML = 0;
 
+    //Loop dataTask
     for(let i=0; i<dataTask.length; i++){
         if(dataTask[i].status == "To_do"){
             countTodo.innerHTML++;
             to_do.innerHTML +=`
-                <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+            <button onclick="btn_Tasks(),Delete(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
                     <i class="fa-solid fa-circle-question px-3"></i>
                 </div>
@@ -111,14 +128,13 @@ function Show_Task(){
                     <div>
                         <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                         <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </button>
-                `;
-
-            list.appendChild(to_do);
-            }else if(dataTask[i].status == "In Progress"){
-                countinProgress.innerHTML++;
-                in_progress.innerHTML +=`
-                <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+            </button>
+            `;
+        }else if(dataTask[i].status == "In Progress"){
+            countinProgress.innerHTML++;
+            in_progress.innerHTML +=`
+            <button onclick="btn_Tasks(),Delete(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
                     <div class="fs-4 text-success">
                         <i class="fa-solid fa-rotate-right px-3"></i>
                     </div>
@@ -131,13 +147,13 @@ function Show_Task(){
                     <div>
                         <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                         <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </button>
-                `;
-
-            }else if(dataTask[i].status == "Done"){
-                countDone.innerHTML++;
-                done.innerHTML +=`
-                <button class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0">
+            </button>
+            `;
+        }else if(dataTask[i].status == "Done"){
+            countDone.innerHTML++;
+            done.innerHTML +=`
+            <button onclick="btn_Tasks(),Delete(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
+                data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
                 <i class="fa-solid fa-circle-check px-3"></i>
                 </div>
@@ -150,16 +166,19 @@ function Show_Task(){
                     <div>
                         <span class="badge text-bg-primary">${dataTask[i].priority}</span>
                         <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-                </button>
-                `;
-            }
+            </button>
+            `;
+        }
     } 
 }
 
 //Delete
 //Function Delete
-function Delete(){
-
+function Delete(index){
+    dataTask.splice(index,1);
+    localStorage.tasks = JSON.stringify(dataTask);
+    Show_Task();
 }
+
 //Show Tasks
 Show_Task();
