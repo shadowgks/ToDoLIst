@@ -1,13 +1,13 @@
-//get value
-let InputTitel = document.querySelector("#InputTitel");
-//checkF_B Checked radio
-let checkF_B;
-let Radio_F= document.querySelector('#Radio_Feature');
-let Radio_B = document.querySelector('#Radio_Bug');
-let priority_menu = document.querySelector("#priority_menu");
-let status_menu = document.querySelector("#status_menu");
-let input_Date = document.querySelector("#input_Date");
-let input_description = document.querySelector("#InputComment");
+// //get value
+// let InputTitel = document.querySelector("#InputTitel");
+// //checkF_B Checked radio
+// let checkF_B;
+// let Radio_F= document.querySelector('#Radio_Feature');
+// let Radio_B = document.querySelector('#Radio_Bug');
+// let priority_menu = document.querySelector("#priority_menu");
+// let status_menu = document.querySelector("#status_menu");
+// let input_Date = document.querySelector("#input_Date");
+// let input_description = document.querySelector("#InputComment");
 var index_Global ;
 
 function checkinputRadio(){
@@ -56,13 +56,15 @@ function Clear(){
 //Create
 //Function Add_Task 
 function Add(){
+    const form = document.forms["tasks"];
     let newTask = {
-        titel : InputTitel.value,
-        checkFB : checkF_B,
-        priority : priority_menu.value,
-        status : status_menu.value,
-        date : input_Date.value,
-        description : input_description.value,
+        //get name iputs
+        titel : form.InputTitel.value,  
+        checkFB : form.flexRadioDefault.value,
+        priority : form.priority_menu.value,
+        status : form.status_menu.value,
+        date : form.input_Date.value,
+        description : form.InputComment.value,
     };
     //test
     console.log(newTask);
@@ -191,18 +193,21 @@ function btn_Tasks(index){
         
     })
 }
-   
+
+
 function btn_add_tasks(){
     Btn_Edite.style.display = 'none';
     Btn_Delete.style.display = 'none';
     Btn_Save.style.display = 'block';
     Clear();
 }
-//Show Tasks
-Show_Task();
+
 
 Btn_Delete.addEventListener("click",()=>{
     dataTask.splice(index_Global,1);
     localStorage.tasks = JSON.stringify(dataTask);
     Show_Task();
 });
+
+//Show Tasks
+Show_Task();
