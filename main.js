@@ -8,11 +8,13 @@ let priority_menu = document.querySelector("#priority_menu");
 let status_menu = document.querySelector("#status_menu");
 let input_Date = document.querySelector("#input_Date");
 let input_description = document.querySelector("#InputComment");
+var index_Global ;
+
 function checkinputRadio(){
     //Check Radio inpute
-    if(Radio_F.checked == true){
+    if(Radio_F.checked){
         checkF_B = Radio_F.value;
-    }else if(Radio_B.checked == true){
+    }else if(Radio_B.checked){
         checkF_B = Radio_B.value;
     }
 }
@@ -145,7 +147,7 @@ function Show_Task(){
         }else if(dataTask[i].status == "Done"){
             countDone.innerHTML++;
             done.innerHTML +=`
-            <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
+            <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
                 <i class="fa-solid fa-circle-check px-3"></i>
@@ -172,24 +174,24 @@ function btn_Tasks(index){
     Btn_Edite.style.display = 'block';
     Btn_Delete.style.display = 'block';
 
-    InputTitel.value = dataTask[index].titel;
-    // checkF_B.value = dataTask[index].checked=checkF_B;
-    priority_menu.value = dataTask[index].priority;
-    status_menu.value = dataTask[index].status;
-    input_Date.value = dataTask[index].date;
-    input_description.value = dataTask[index].description;
+    index_Global = index;
     
-    //btn delete modal
-    Btn_Delete.addEventListener("click",(index)=>{
-        dataTask.splice(index,1);
-        localStorage.tasks = JSON.stringify(dataTask);
-        Show_Task();
-    });
+    // InputTitel.value = dataTask[index].titel;
+    // // checkF_B.value = dataTask[index].checked=checkF_B;
+    // priority_menu.value = dataTask[index].priority;
+    // status_menu.value = dataTask[index].status;
+    // input_Date.value = dataTask[index].date;
+    // input_description.value = dataTask[index].description;
+    // console.log(index);
+     //btn delete modal
+    
+
     //btn update modal
     Btn_Edite.addEventListener("click",(index)=>{
         
     })
 }
+   
 function btn_add_tasks(){
     Btn_Edite.style.display = 'none';
     Btn_Delete.style.display = 'none';
@@ -198,3 +200,9 @@ function btn_add_tasks(){
 }
 //Show Tasks
 Show_Task();
+
+Btn_Delete.addEventListener("click",()=>{
+    dataTask.splice(index_Global,1);
+    localStorage.tasks = JSON.stringify(dataTask);
+    Show_Task();
+});
