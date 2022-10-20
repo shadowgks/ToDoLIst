@@ -68,7 +68,7 @@
 				<div class="d-flex justify-content-end my-3">
 					<div class="d-flex justify-content-between align-items-end">
 						<button 
-						onclick="btn_add_tasks()"
+						onclick="Btn_Add_Tasks()"
 						class="btn btn-dark rounded-5 px-4 d-flex align-items-center" 
 						data-bs-toggle="modal" 
 						data-bs-target="#exampleModal">
@@ -139,7 +139,7 @@
 			<form id="Task_Form" name="tasks">
 				<div class="mb-3">
 				  <label for="exampleInputTitle1" class="form-label">Title</label>
-				  <input type="text" name="InputTitel" class="form-control" id="InputTitel" aria-describedby="emailHelp" required>
+				  <input type="text" name="inputTitel" class="form-control" id="inputTitel" aria-describedby="emailHelp" required>
 				</div>
 				<div class="mb-1">
 					<label for="exampleInputTitle2" class="form-label">Type</label><br>
@@ -152,7 +152,7 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputTitle3" class="form-label">Priority</label>
-					<select name="priority" name="priority" id="priority_menu" class="form-select" aria-label="Default select example">
+					<select name="priority" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
 						<option selected>Please Select</option>
 						<option value="Low">Low</option>
 						<option value="Medium">Medium</option>
@@ -162,7 +162,7 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputTitle4" class="form-label">Status</label>
-					<select name="status" id="status_menu" class="form-select" aria-label="Default select example">
+					<select name="statusMenu" id="statusMenu" class="form-select" aria-label="Default select example">
 						<option selected>Please Select</option>
 						<option value="To_do">To do</option>
 						<option value="In Progress">In Progress</option>
@@ -171,11 +171,11 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputdate" class="form-label">Date</label>
-					<input type="date" name="date" class="form-control" id="input_Date" aria-describedby="dateHelp" required>
+					<input type="date" name="inputDate" class="form-control" id="inputDate" aria-describedby="dateHelp" required>
 				  </div>
 				  <div class="mb-3">
 					<label for="validationTextarea" class="form-label">Textarea</label>
-    				<textarea class="form-control" name="InputComment" id="InputComment" rows="5" required></textarea>
+    				<textarea class="form-control" name="inputDesciption" id="inputDesciption" rows="5" required></textarea>
 				  </div>
 				  <div class="modal-footer">
 					<button type="submit" class="btn btn-warning rounded-5" id="Btn_close" data-bs-dismiss="modal">Close</button>
@@ -209,5 +209,11 @@
 	<!-- ================== BEGIN main-js ================== -->
 	<script src="main.js"></script>
 	<!-- ================== END main-js ================== -->
+
+	<!-- ================== BEGIN Show Tasks ================== -->
+	<script>
+		Show_Task();
+	</script>
+	<!-- ================== END Show Tasks ================== -->
 </body>
 </html>

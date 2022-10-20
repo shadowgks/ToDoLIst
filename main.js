@@ -1,56 +1,49 @@
-
-var index_Global ;
-
+//Create Array dataTask and check if you empty!
+let dataTask;
+if(localStorage.tasks == null){
+    dataTask = [];
+}else{
+    dataTask = JSON.parse(localStorage.tasks);
+}
 
 //Get id Btn Form Modal
-let Btn_Save = document.getElementById("Btn_save");
-let Btn_Edite = document.getElementById("Btn_edite");
-let Btn_Delete = document.getElementById("Btn_delete");
+let btnSave = document.getElementById("Btn_save");
+let btnEdite = document.getElementById("Btn_edite");
+let btnDelete = document.getElementById("Btn_delete");
 
+//index items tasks
+var indexGlobal;
+
+//Dec Form
+const form = document.forms["tasks"];
 
 //Function Click btn save
-Btn_Save.addEventListener("click",(e)=>{
+btnSave.addEventListener("click",(e)=>{
     e.preventDefault();
     Add();
 })
 
-//Create Array dataTask and check if you empty!
-let dataTask;
-if(localStorage.tasks != null){
-    dataTask = JSON.parse(localStorage.tasks);
-}else{
-    dataTask = [];
-}
-
-
-
-
-//Function Clear
-function Clear(){
-    InputTitel.value = "";
-    priority_menu.value = "";
-    status_menu.value = "";
-    input_Date.value = "";
-    InputComment.value = "";
-}
-
 //Create
 //Function Add_Task 
 function Add(){
-    const form = document.forms["tasks"];
     let newTask = {
         //get name iputs
-        titel : form.InputTitel.value,  
+        titel : form.inputTitel.value,  
         checkFB : form.flexRadioDefault.value,
-        priority : form.priority_menu.value,
-        status : form.status_menu.value,
-        date : form.input_Date.value,
-        description : form.InputComment.value,
+        priority : form.priorityMenu.value,
+        status : form.statusMenu.value,
+        date : form.inputDate.value,
+        description : form.inputDesciption.value,
     };
     //test
     console.log(newTask);
     //check input if you empty
-    if(InputTitel.value == "" || priority_menu.value == "" || status_menu.value == "" || input_Date.value == "" || InputComment.value == ""){
+    if(form.inputTitel.value == "" 
+    || form.flexRadioDefault.value == "" 
+    || form.priorityMenu.value == "" 
+    || form.statusMenu.value == "" 
+    || form.inputDate.value == "" 
+    || form.inputDesciption.value == ""){
         alert("Please Fill in Fields!!!");
     }else{
     //Add Elements To Array
@@ -58,8 +51,6 @@ function Add(){
     Show_Task();
     //Create Local Storage
     localStorage.setItem('tasks',JSON.stringify(dataTask));
-    //Clear inputs
-    Clear();
     }
     
 };
@@ -67,131 +58,100 @@ function Add(){
 //Read
 //Function Show_Task
 function Show_Task(){
-    //get container div
-    let to_do = document.querySelector("#to_do_tasks");
-    let in_progress = document.querySelector("#in_progress_tasks");
-    let done = document.querySelector("#done_tasks");
-
     //Clear container div
-    document.querySelector("#to_do").innerHTML = "";
-    document.querySelector("#in_progress").innerHTML = "";
-    ddocument.querySelector("#done").innerHTML = "";
+    document.querySelector("#to_do_tasks").innerHTML = "";
+    document.querySelector("#in_progress_tasks").innerHTML = "";
+    document.querySelector("#done_tasks").innerHTML = "";
 
-    //get title tasks
-    let countTodo = document.getElementById("to-do-tasks-count");
-    let countinProgress = document.getElementById("in-Progress-tasks-count");
-    let countDone = document.getElementById("done-tasks-count");
+    //get title tasks count
+    document.getElementById("to-do-tasks-count").innerHTML = 0;
+    document.getElementById("in-Progress-tasks-count").innerHTML = 0;
+    document.getElementById("done-tasks-count").innerHTML = 0;
 
-    //Count Table
-    countTodo.innerHTML = 0;
-    countinProgress.innerHTML = 0;
-    countDone.innerHTML = 0;
-
+    //This select choise Status
     let selectStatus;
 
     //Loop dataTask
-    for(let i=0; i<dataTask.length; i++){
-        if(dataTask[i].status == "To_do"){
-            countTodo.innerHTML++;
-            document.querySelector("#to_do").innerHTML +=`
-            <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
-                data-bs-target="#exampleModal">
-                <div class="fs-4 text-success">
-                    <i class="fa-solid fa-circle-question px-3"></i>
-                </div>
-                <div class="text-start">
-                    <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
-                            <div class="pb-1 w-100 pe-1">
-                                <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
-                            </div>
-                    <div>
-                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-            </button>
-            `;
-        }else if(dataTask[i].status == "In Progress"){
-            countinProgress.innerHTML++;
-            document.querySelector("#in_progress").innerHTML +=`
-            <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
-                data-bs-target="#exampleModal">
-                    <div class="fs-4 text-success">
-                        <i class="fa-solid fa-rotate-right px-3"></i>
-                    </div>
-                    <div class="text-start">
-                        <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
-                        <div class="pb-1 w-100 pe-1">
-                            <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                            <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
-                        </div>
-                    <div>
-                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
-            </button>
-            `;
-        }else if(dataTask[i].status == "Done"){
-            countDone.innerHTML++;
-            
+    for(let index=0; index<dataTask.length; index++){
+        if(dataTask[index].status == "To_do"){
+            document.getElementById("to-do-tasks-count").innerHTML++;
+            selectStatus = document.querySelector("#to_do_tasks");
+            //<i class="fa-solid fa-circle-question px-3"></i>
+        }else if(dataTask[index].status == "In Progress"){
+            document.getElementById("in-Progress-tasks-count").innerHTML++;
+            selectStatus = document.querySelector("#in_progress_tasks");
+            //<i class="fa-solid fa-rotate-right px-3"></i>
+        }else if(dataTask[index].status == "Done"){
+            document.getElementById("done-tasks-count").innerHTML++;
+            selectStatus = document.querySelector("#done_tasks");
+            //<i class="fa-solid fa-circle-check px-3"></i>
         }
+
+        //Affiche buttone tasks
         selectStatus.innerHTML +=`
-            <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
+            <button onclick="Btn_Tasks(${index})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
-                <i class="fa-solid fa-circle-check px-3"></i>
+                <i class="fa-solid fa-circle-question px-3"></i>
                 </div>
                 <div class="text-start">
-                    <div class="fw-bolder fs-5">${dataTask[i].titel}</div>
+                    <div class="fw-bolder fs-5">${dataTask[index].titel}</div>
                             <div class="pb-1 w-100 pe-1">
-                                <div class="opacity-50">#${i+1} created in ${dataTask[i].date}</div>
-                                <div class="fw-bold " title="${dataTask[i].description}">${dataTask[i].description}</div>
+                                <div class="opacity-50">#${index+1} created in ${dataTask[index].date}</div>
+                                <div class="fw-bold " title="${dataTask[index].description}">${dataTask[index].description}</div>
                             </div>
                     <div>
-                        <span class="badge text-bg-primary">${dataTask[i].priority}</span>
-                        <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
+                        <span class="badge text-bg-primary">${dataTask[index].priority}</span>
+                        <span class="badge text-bg-secondary">${dataTask[index].checkFB}</span>
             </button>
             `;
     } 
 }
 
+//function Btn tasks
+function Btn_Tasks(index){
+    btnSave.style.display = 'none';
+    btnEdite.style.display = 'block';
+    btnDelete.style.display = 'block';
+
+    //initialize indexGlobal 
+    indexGlobal = index;
+    
+    //Remplier Inputs
+    form.inputTitel.value = dataTask[index].titel;
+    form.flexRadioDefault.value = dataTask[index].checkFB;
+    form.priorityMenu.value = dataTask[index].priority;
+    form.statusMenu.value = dataTask[index].status;
+    form.inputDate.value = dataTask[index].date;
+    form.inputDesciption.value = dataTask[index].description;
+}
+
+function Btn_Add_Tasks(){
+    btnEdite.style.display = 'none';
+    btnDelete.style.display = 'none';
+    btnSave.style.display = 'block';
+
+    //Clear inputs
+    form.reset();
+}
+
 //Delete
-//function Btn Form Modal
-function btn_Tasks(index){
-    Btn_Save.style.display = 'none';
-    Btn_Edite.style.display = 'block';
-    Btn_Delete.style.display = 'block';
-
-    index_Global = index;
-    
-    // InputTitel.value = dataTask[index].titel;
-    // // checkF_B.value = dataTask[index].checked=checkF_B;
-    // priority_menu.value = dataTask[index].priority;
-    // status_menu.value = dataTask[index].status;
-    // input_Date.value = dataTask[index].date;
-    // input_description.value = dataTask[index].description;
-    // console.log(index);
-     //btn delete modal
-    
-
-    //btn update modal
-    Btn_Edite.addEventListener("click",(index)=>{
-        
-    })
-}
-
-
-function btn_add_tasks(){
-    Btn_Edite.style.display = 'none';
-    Btn_Delete.style.display = 'none';
-    Btn_Save.style.display = 'block';
-    Clear();
-}
-
-
-Btn_Delete.addEventListener("click",()=>{
-    dataTask.splice(index_Global,1);
+btnDelete.addEventListener("click",(e)=>{
+    e.preventDefault();
+    dataTask.splice(indexGlobal,1);
     localStorage.tasks = JSON.stringify(dataTask);
     Show_Task();
 });
 
-//Show Tasks
-Show_Task();
+//Update
+btnEdite.addEventListener("click",(e)=>{
+    e.preventDefault();
+    dataTask[indexGlobal].titel = form.inputTitel.value;
+    dataTask[indexGlobal].checkFB = form.flexRadioDefault.value;
+    dataTask[indexGlobal].priority = form.priorityMenu.value;
+    dataTask[indexGlobal].status = form.statusMenu.value;
+    dataTask[indexGlobal].date = form.inputDate.value;
+    dataTask[indexGlobal].description = form.inputDesciption.value;
+    localStorage.tasks = JSON.stringify(dataTask);
+    Show_Task();
+})
