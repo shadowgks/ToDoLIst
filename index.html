@@ -84,12 +84,9 @@
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">To do (<span id="to-do-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+						<div class="p-0" style="overflow: auto;" id="to_do_tasks">
 							<!-- TO DO TASKS HERE -->
-							<div id="to_do">
-								
-							</div>
-							
+
 						</div>
 					</div>
 				</div>
@@ -98,11 +95,9 @@
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">In Progress (<span id="in-Progress-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+						<div class="p-0" style="overflow: auto;" id="in_progress_tasks">
 							<!-- TO DO TASKS HERE -->
-							<div id="in_progress">
-								
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -111,11 +106,9 @@
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">Done (<span id="done-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="to-do-tasks">
+						<div class="p-0" style="overflow: auto;" id="done_tasks">
 							<!-- TO DO TASKS HERE -->
-							<div id="done">
-								
-							</div>
+
 						</div>
 					</div>
 				</div>
@@ -146,7 +139,7 @@
 			<form id="Task_Form" name="tasks">
 				<div class="mb-3">
 				  <label for="exampleInputTitle1" class="form-label">Title</label>
-				  <input type="text"  class="form-control" id="InputTitel" aria-describedby="emailHelp" required>
+				  <input type="text" name="InputTitel" class="form-control" id="InputTitel" aria-describedby="emailHelp" required>
 				</div>
 				<div class="mb-1">
 					<label for="exampleInputTitle2" class="form-label">Type</label><br>
@@ -159,7 +152,7 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputTitle3" class="form-label">Priority</label>
-					<select name="priority" id="priority_menu" class="form-select" aria-label="Default select example">
+					<select name="priority" name="priority" id="priority_menu" class="form-select" aria-label="Default select example">
 						<option selected>Please Select</option>
 						<option value="Low">Low</option>
 						<option value="Medium">Medium</option>
@@ -178,11 +171,11 @@
 				  </div>
 				  <div class="mb-3">
 					<label for="exampleInputdate" class="form-label">Date</label>
-					<input type="date" class="form-control" id="input_Date" aria-describedby="dateHelp" required>
+					<input type="date" name="date" class="form-control" id="input_Date" aria-describedby="dateHelp" required>
 				  </div>
 				  <div class="mb-3">
 					<label for="validationTextarea" class="form-label">Textarea</label>
-    				<textarea class="form-control" id="InputComment" rows="5" required></textarea>
+    				<textarea class="form-control" name="InputComment" id="InputComment" rows="5" required></textarea>
 				  </div>
 				  <div class="modal-footer">
 					<button type="submit" class="btn btn-warning rounded-5" id="Btn_close" data-bs-dismiss="modal">Close</button>

@@ -1,23 +1,6 @@
-// //get value
-// let InputTitel = document.querySelector("#InputTitel");
-// //checkF_B Checked radio
-// let checkF_B;
-// let Radio_F= document.querySelector('#Radio_Feature');
-// let Radio_B = document.querySelector('#Radio_Bug');
-// let priority_menu = document.querySelector("#priority_menu");
-// let status_menu = document.querySelector("#status_menu");
-// let input_Date = document.querySelector("#input_Date");
-// let input_description = document.querySelector("#InputComment");
+
 var index_Global ;
 
-function checkinputRadio(){
-    //Check Radio inpute
-    if(Radio_F.checked){
-        checkF_B = Radio_F.value;
-    }else if(Radio_B.checked){
-        checkF_B = Radio_B.value;
-    }
-}
 
 //Get id Btn Form Modal
 let Btn_Save = document.getElementById("Btn_save");
@@ -25,11 +8,9 @@ let Btn_Edite = document.getElementById("Btn_edite");
 let Btn_Delete = document.getElementById("Btn_delete");
 
 
-
 //Function Click btn save
 Btn_Save.addEventListener("click",(e)=>{
     e.preventDefault();
-    checkinputRadio();
     Add();
 })
 
@@ -87,14 +68,14 @@ function Add(){
 //Function Show_Task
 function Show_Task(){
     //get container div
-    let to_do = document.querySelector("#to_do");
-    let in_progress = document.querySelector("#in_progress");
-    let done = document.querySelector("#done");
+    let to_do = document.querySelector("#to_do_tasks");
+    let in_progress = document.querySelector("#in_progress_tasks");
+    let done = document.querySelector("#done_tasks");
 
     //Clear container div
-    to_do.innerHTML = "";
-    in_progress.innerHTML = "";
-    done.innerHTML = "";
+    document.querySelector("#to_do").innerHTML = "";
+    document.querySelector("#in_progress").innerHTML = "";
+    ddocument.querySelector("#done").innerHTML = "";
 
     //get title tasks
     let countTodo = document.getElementById("to-do-tasks-count");
@@ -106,11 +87,13 @@ function Show_Task(){
     countinProgress.innerHTML = 0;
     countDone.innerHTML = 0;
 
+    let selectStatus;
+
     //Loop dataTask
     for(let i=0; i<dataTask.length; i++){
         if(dataTask[i].status == "To_do"){
             countTodo.innerHTML++;
-            to_do.innerHTML +=`
+            document.querySelector("#to_do").innerHTML +=`
             <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
@@ -129,7 +112,7 @@ function Show_Task(){
             `;
         }else if(dataTask[i].status == "In Progress"){
             countinProgress.innerHTML++;
-            in_progress.innerHTML +=`
+            document.querySelector("#in_progress").innerHTML +=`
             <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                     <div class="fs-4 text-success">
@@ -148,7 +131,9 @@ function Show_Task(){
             `;
         }else if(dataTask[i].status == "Done"){
             countDone.innerHTML++;
-            done.innerHTML +=`
+            
+        }
+        selectStatus.innerHTML +=`
             <button onclick="btn_Tasks(${i})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
@@ -165,7 +150,6 @@ function Show_Task(){
                         <span class="badge text-bg-secondary">${dataTask[i].checkFB}</span>
             </button>
             `;
-        }
     } 
 }
 
