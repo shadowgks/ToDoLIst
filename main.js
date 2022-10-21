@@ -102,7 +102,7 @@ function Show_Task(){
                     <div class="fw-bolder fs-5">${dataTask[index].titel}</div>
                             <div class="pb-1 w-100 pe-1">
                                 <div class="opacity-50">#${index+1} created in ${dataTask[index].date}</div>
-                                <div class="fw-bold " title="${dataTask[index].description}">${dataTask[index].description}</div>
+                                <div class="fw-bold text-truncate" style="max-width:16rem" title="${dataTask[index].description}" >${dataTask[index].description}</div>
                             </div>
                     <div>
                         <span class="badge text-bg-primary">${dataTask[index].priority}</span>
