@@ -21,7 +21,8 @@ const form = document.forms["tasks"];
 btnSave.addEventListener("click",(e)=>{
     e.preventDefault();
     Add();
-})
+    Show_Task();
+});
 
 //Create
 //Function Add_Task 
@@ -48,7 +49,6 @@ function Add(){
     }else{
     //Add Elements To Array
     dataTask.push(newTask);
-    Show_Task();
     //Create Local Storage
     localStorage.setItem('tasks',JSON.stringify(dataTask));
     }
@@ -92,7 +92,11 @@ function Show_Task(){
             <button onclick="Btn_Tasks(${index})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
-                <i class="fa-solid fa-circle-question px-3"></i>
+                <i class="fa-solid `
+                +((dataTask[index].status == 'To_do') ? 'fa-circle-question' 
+                : (dataTask[index].status == 'In Progress') ? 'fa-rotate-right' 
+                : 'fa-circle-check')+`
+                px-3"></i>
                 </div>
                 <div class="text-start">
                     <div class="fw-bolder fs-5">${dataTask[index].titel}</div>
