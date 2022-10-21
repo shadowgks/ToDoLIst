@@ -150,12 +150,22 @@ btnDelete.addEventListener("click",(e)=>{
 //Update
 btnEdite.addEventListener("click",(e)=>{
     e.preventDefault();
-    dataTask[indexGlobal].titel = form.inputTitel.value;
-    dataTask[indexGlobal].checkFB = form.flexRadioDefault.value;
-    dataTask[indexGlobal].priority = form.priorityMenu.value;
-    dataTask[indexGlobal].status = form.statusMenu.value;
-    dataTask[indexGlobal].date = form.inputDate.value;
-    dataTask[indexGlobal].description = form.inputDesciption.value;
-    localStorage.tasks = JSON.stringify(dataTask);
-    Show_Task();
+    //check input if you empty
+    if(form.inputTitel.value == "" 
+    || form.flexRadioDefault.value == "" 
+    || form.priorityMenu.value == "" 
+    || form.statusMenu.value == "" 
+    || form.inputDate.value == "" 
+    || form.inputDesciption.value == ""){
+        alert("Please Fill in Fields!!!");
+    }else{
+        dataTask[indexGlobal].titel = form.inputTitel.value;
+        dataTask[indexGlobal].checkFB = form.flexRadioDefault.value;
+        dataTask[indexGlobal].priority = form.priorityMenu.value;
+        dataTask[indexGlobal].status = form.statusMenu.value;
+        dataTask[indexGlobal].date = form.inputDate.value;
+        dataTask[indexGlobal].description = form.inputDesciption.value;
+        localStorage.tasks = JSON.stringify(dataTask);
+        Show_Task();
+    }
 })
