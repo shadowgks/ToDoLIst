@@ -5,7 +5,7 @@ if(localStorage.tasks == null){
 }else{
     dataTask = JSON.parse(localStorage.tasks);
 }
-
+let drag = null;
 //Get id Btn Form Modal
 let btnSave = document.getElementById("Btn_save");
 let btnEdite = document.getElementById("Btn_edite");
@@ -17,15 +17,24 @@ var indexGlobal;
 //Dec Form
 const form = document.forms["tasks"];
 
-//Function Click btn save
+//btn save
 btnSave.addEventListener("click",(e)=>{
     e.preventDefault();
-    Add();
-    Show_Task();
+    //check input if you empty
+    if(form.inputTitel.value === "" 
+    || form.flexRadioDefault.value === "" 
+    || form.priorityMenu.value === "Please Select" 
+    || form.statusMenu.value === "Please Select" 
+    || form.inputDate.value === "" 
+    || form.inputDesciption.value === ""){
+        alert("Please Fill in Fields!!!");
+    }else{
+        Add();
+        Show_Task();
+    }  
 });
 
 //Create
-//Function Add_Task 
 function Add(){
     let newTask = {
         //get name iputs
@@ -36,27 +45,13 @@ function Add(){
         date : form.inputDate.value,
         description : form.inputDesciption.value,
     };
-    //test
-    console.log(newTask);
-    //check input if you empty
-    if(form.inputTitel.value == "" 
-    || form.flexRadioDefault.value == "" 
-    || form.priorityMenu.value == "" 
-    || form.statusMenu.value == "" 
-    || form.inputDate.value == "" 
-    || form.inputDesciption.value == ""){
-        alert("Please Fill in Fields!!!");
-    }else{
     //Add Elements To Array
     dataTask.push(newTask);
     //Create Local Storage
     localStorage.setItem('tasks',JSON.stringify(dataTask));
-    }
-    
 };
 
 //Read
-//Function Show_Task
 function Show_Task(){
     //Clear container div
     document.querySelector("#to_do_tasks").innerHTML = "";
@@ -71,25 +66,22 @@ function Show_Task(){
     //This select choise Status
     let selectStatus;
 
+    
     //Loop dataTask
     for(let index=0; index<dataTask.length; index++){
         if(dataTask[index].status == "To_do"){
             document.getElementById("to-do-tasks-count").innerHTML++;
             selectStatus = document.querySelector("#to_do_tasks");
-            //<i class="fa-solid fa-circle-question px-3"></i>
         }else if(dataTask[index].status == "In Progress"){
             document.getElementById("in-Progress-tasks-count").innerHTML++;
             selectStatus = document.querySelector("#in_progress_tasks");
-            //<i class="fa-solid fa-rotate-right px-3"></i>
         }else if(dataTask[index].status == "Done"){
             document.getElementById("done-tasks-count").innerHTML++;
             selectStatus = document.querySelector("#done_tasks");
-            //<i class="fa-solid fa-circle-check px-3"></i>
         }
-
         //Affiche buttone tasks
         selectStatus.innerHTML +=`
-            <button onclick="Btn_Tasks(${index})" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal" 
+            <button onclick="Btn_Tasks(${index})" draggable="true" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref item-Tasks" data-bs-toggle="modal" 
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
                 <i class="fa-solid `
@@ -109,10 +101,12 @@ function Show_Task(){
                         <span class="badge text-bg-secondary">${dataTask[index].checkFB}</span>
             </button>
             `;
+            Drag_Btn_Task();
     } 
+    
 }
 
-//function Btn tasks
+//Btn tasks
 function Btn_Tasks(index){
     btnSave.style.display = 'none';
     btnEdite.style.display = 'block';
@@ -151,12 +145,12 @@ btnDelete.addEventListener("click",(e)=>{
 btnEdite.addEventListener("click",(e)=>{
     e.preventDefault();
     //check input if you empty
-    if(form.inputTitel.value == "" 
-    || form.flexRadioDefault.value == "" 
-    || form.priorityMenu.value == "" 
-    || form.statusMenu.value == "" 
-    || form.inputDate.value == "" 
-    || form.inputDesciption.value == ""){
+    if(form.inputTitel.value === "" 
+    || form.flexRadioDefault.value === "" 
+    || form.priorityMenu.value === "Please Select" 
+    || form.statusMenu.value === "Please Select" 
+    || form.inputDate.value === "" 
+    || form.inputDesciption.value === ""){
         alert("Please Fill in Fields!!!");
     }else{
         dataTask[indexGlobal].titel = form.inputTitel.value;
@@ -169,3 +163,32 @@ btnEdite.addEventListener("click",(e)=>{
         Show_Task();
     }
 })
+
+//drag & drop
+function Drag_Btn_Task(){
+    let itemsTasks = document.querySelectorAll(".item-Tasks");
+    let boxs = document.querySelectorAll(".box");
+
+    itemsTasks.forEach(item=>{
+        item.addEventListener("dragstart",()=>{
+            drag = item;
+            console.log(drag);
+        });
+        item.addEventListener("dragend",()=>{
+            drag = null;
+        });
+        boxs.forEach(box=>{
+            box.addEventListener("dragover",(e)=>{
+                e.preventDefault();
+            })
+            box.addEventListener("dragleave",()=>{
+
+            })
+            box.addEventListener("drag",()=>{
+                box.append(drag);
+                console.log(box.append(drag));
+            })
+        })
+    })
+    
+}

@@ -80,33 +80,33 @@
 			
 			<div class="row d-flex gap-3 m-0">
 				<div class="col-lg">
-					<div class="row">
+					<div class="row box">
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">To do (<span id="to-do-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="to_do_tasks">
+						<div class="p-0 box" style="overflow: auto;" id="to_do_tasks">
 							<!-- TO DO TASKS HERE -->
 
 						</div>
 					</div>
 				</div>
 				<div class="col-lg">
-					<div class="row">
+					<div class="row box">
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">In Progress (<span id="in-Progress-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="in_progress_tasks">
+						<div class="p-0 box" style="overflow: auto;" id="in_progress_tasks">
 							<!-- in_progress TASKS HERE -->
-
+							
 						</div>
 					</div>
 				</div>
 				<div class="col-lg">
-					<div class="row">
+					<div class="row box">
 						<div class="bg-dark text-white p-3 text-center">
 							<h4 class="fs-5 m-0">Done (<span id="done-tasks-count"></span>)</h4>
 						</div>
-						<div class="p-0" style="overflow: auto;" id="done_tasks">
+						<div class="p-0 box" style="overflow: auto;" id="done_tasks">
 							<!-- done TASKS HERE -->
 
 						</div>
@@ -153,7 +153,7 @@
 				  <div class="mb-3">
 					<label for="exampleInputTitle3" class="form-label">Priority</label>
 					<select name="priority" name="priorityMenu" id="priorityMenu" class="form-select" aria-label="Default select example">
-						<option selected>Please Select</option>
+						<option value="Please Select" selected>Please Select</option>
 						<option value="Low">Low</option>
 						<option value="Medium">Medium</option>
 						<option value="High">High</option>
@@ -163,7 +163,7 @@
 				  <div class="mb-3">
 					<label for="exampleInputTitle4" class="form-label">Status</label>
 					<select name="statusMenu" id="statusMenu" class="form-select" aria-label="Default select example">
-						<option selected>Please Select</option>
+						<option value="Please Select" selected>Please Select</option>
 						<option value="To_do">To do</option>
 						<option value="In Progress">In Progress</option>
 						<option value="Done">Done</option>
@@ -178,7 +178,7 @@
     				<textarea class="form-control" name="inputDesciption" id="inputDesciption" rows="5" required></textarea>
 				  </div>
 				  <div class="modal-footer">
-					<button type="submit" class="btn btn-warning rounded-5" id="Btn_close" data-bs-dismiss="modal">Close</button>
+					<button type="submit" class="btn btn-warning rounded-5" data-bs-dismiss="modal">Close</button>
 					<button type="submit" class="btn btn-dark rounded-5" data-bs-dismiss="modal" id="Btn_save">Save changes</button>
 					<button type="submit" class="btn btn-success rounded-5" data-bs-dismiss="modal" id="Btn_edite">Edite</button>
 					<button type="submit" class="btn btn-danger rounded-5" data-bs-dismiss="modal" id="Btn_delete">Delete</button>
