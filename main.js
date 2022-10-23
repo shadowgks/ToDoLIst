@@ -4,23 +4,18 @@ if(localStorage.tasks == null){
     dataTask = [];
 }else{
     dataTask = JSON.parse(localStorage.tasks);
-}
-let drag = null;
+};
 //Get id Btn Form Modal
 let btnSave = document.getElementById("Btn_save");
 let btnEdite = document.getElementById("Btn_edite");
 let btnDelete = document.getElementById("Btn_delete");
-
 //index items tasks
 var indexGlobal;
-
 //Dec Form
 const form = document.forms["tasks"];
-
 //btn save
 btnSave.addEventListener("click",(e)=>{
     e.preventDefault();
-    //check input if you empty
     if(form.inputTitel.value === "" 
     || form.flexRadioDefault.value === "" 
     || form.priorityMenu.value === "Please Select" 
@@ -33,7 +28,6 @@ btnSave.addEventListener("click",(e)=>{
         Show_Task();
     }  
 });
-
 //Create
 function Add(){
     let newTask = {
@@ -50,23 +44,18 @@ function Add(){
     //Create Local Storage
     localStorage.setItem('tasks',JSON.stringify(dataTask));
 };
-
 //Read
 function Show_Task(){
     //Clear container div
     document.querySelector("#to_do_tasks").innerHTML = "";
     document.querySelector("#in_progress_tasks").innerHTML = "";
     document.querySelector("#done_tasks").innerHTML = "";
-
     //get title tasks count
     document.getElementById("to-do-tasks-count").innerHTML = 0;
     document.getElementById("in-Progress-tasks-count").innerHTML = 0;
     document.getElementById("done-tasks-count").innerHTML = 0;
-
     //This select choise Status
     let selectStatus;
-
-    
     //Loop dataTask
     for(let index=0; index<dataTask.length; index++){
         if(dataTask[index].status == "To_do"){
@@ -80,8 +69,7 @@ function Show_Task(){
             selectStatus = document.querySelector("#done_tasks");
         }
         //Affiche buttone tasks
-        selectStatus.innerHTML +=`
-            <button onclick="Btn_Tasks(${index})" draggable="true" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref item-Tasks" data-bs-toggle="modal" 
+        selectStatus.innerHTML +=`<button onclick="Btn_Tasks(${index})" draggable="true" class="bg-light d-flex align-items-center border-0 w-100 mb-2 py-3 px-0 ref" data-bs-toggle="modal"
                 data-bs-target="#exampleModal">
                 <div class="fs-4 text-success">
                 <i class="fa-solid `
@@ -99,22 +87,16 @@ function Show_Task(){
                     <div>
                         <span class="badge text-bg-primary">${dataTask[index].priority}</span>
                         <span class="badge text-bg-secondary">${dataTask[index].checkFB}</span>
-            </button>
-            `;
-            Drag_Btn_Task();
-    } 
-    
-}
-
+            </button>`;
+        }
+};
 //Btn tasks
 function Btn_Tasks(index){
     btnSave.style.display = 'none';
     btnEdite.style.display = 'block';
     btnDelete.style.display = 'block';
-
     //initialize indexGlobal 
     indexGlobal = index;
-    
     //Remplier Inputs
     form.inputTitel.value = dataTask[index].titel;
     form.flexRadioDefault.value = dataTask[index].checkFB;
@@ -122,17 +104,14 @@ function Btn_Tasks(index){
     form.statusMenu.value = dataTask[index].status;
     form.inputDate.value = dataTask[index].date;
     form.inputDesciption.value = dataTask[index].description;
-}
-
+};
 function Btn_Add_Tasks(){
     btnEdite.style.display = 'none';
     btnDelete.style.display = 'none';
     btnSave.style.display = 'block';
-
     //Clear inputs
     form.reset();
-}
-
+};
 //Delete
 btnDelete.addEventListener("click",(e)=>{
     e.preventDefault();
@@ -140,11 +119,9 @@ btnDelete.addEventListener("click",(e)=>{
     localStorage.tasks = JSON.stringify(dataTask);
     Show_Task();
 });
-
 //Update
 btnEdite.addEventListener("click",(e)=>{
     e.preventDefault();
-    //check input if you empty
     if(form.inputTitel.value === "" 
     || form.flexRadioDefault.value === "" 
     || form.priorityMenu.value === "Please Select" 
@@ -162,33 +139,4 @@ btnEdite.addEventListener("click",(e)=>{
         localStorage.tasks = JSON.stringify(dataTask);
         Show_Task();
     }
-})
-
-//drag & drop
-function Drag_Btn_Task(){
-    let itemsTasks = document.querySelectorAll(".item-Tasks");
-    let boxs = document.querySelectorAll(".box");
-
-    itemsTasks.forEach(item=>{
-        item.addEventListener("dragstart",()=>{
-            drag = item;
-            console.log(drag);
-        });
-        item.addEventListener("dragend",()=>{
-            drag = null;
-        });
-        boxs.forEach(box=>{
-            box.addEventListener("dragover",(e)=>{
-                e.preventDefault();
-            })
-            box.addEventListener("dragleave",()=>{
-
-            })
-            box.addEventListener("drag",()=>{
-                box.append(drag);
-                console.log(box.append(drag));
-            })
-        })
-    })
-    
-}
+});
